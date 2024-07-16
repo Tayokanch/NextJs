@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import schema from "./schema";
+import { UsernameSchema } from "./schema";
 const GET = async (request: NextRequest) => {
   return NextResponse.json([
     { id: 1, name: "Tayo" },
@@ -9,7 +9,7 @@ const GET = async (request: NextRequest) => {
 
 const POST = async (request: NextRequest) => {
   const body = await request.json();
-  const validation = schema.safeParse(body);
+  const validation = UsernameSchema.safeParse(body);
   if (!validation.success) {
     return NextResponse.json( validation.error.errors, { status: 400 });
   }

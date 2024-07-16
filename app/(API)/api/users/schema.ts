@@ -1,8 +1,14 @@
-import {z} from 'zod'
+import { z } from "zod";
 
-const schema = z.object({
-    name: z.string().min(3),
-    email: z.string().email(),
-})
+const UsernameSchema = z.object({
+  name: z.string().min(3),
+  email: z.string().email(),
+});
 
-export default schema
+const productSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  price: z.number(),
+});
+
+export { UsernameSchema, productSchema };
